@@ -35,7 +35,7 @@
 
 .profile__edit-button {
   margin-top: auto;
-  text-align: start;
+  text-align: left;
   background-color: #fcf5e5;
   font-size: 16px;
   color: rgba(33, 33, 33, 0.7);

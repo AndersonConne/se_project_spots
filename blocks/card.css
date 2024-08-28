@@ -24,6 +24,7 @@
 
 .card__title-container {
   display: flex;
+  justify-content: space-between;
   margin: 10px 0 0 0;
   font-weight: 500;
 }

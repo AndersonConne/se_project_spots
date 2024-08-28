@@ -74,10 +74,10 @@
   }
   .profile__edit-button {
     margin-bottom: 20px;
-    margin-left: auto;
     font-size: 16px;
     line-height: 1;
     margin-left: 0;
+    padding: 0;
   }
 
   .profile__add-button {

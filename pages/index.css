@@ -1,0 +1,35 @@
+@import url(../vendor/fonts/normalize.css);
+@import url(../vendor/fonts/fonts.css);
+@import url("../blocks/page.css");
+@import url("../blocks/header.css");
+@import url("../blocks/profile.css");
+@import url("../blocks/card.css");
+@import url("../blocks/footer.css");
+
+@media screen and (min-width: 880px) and (max-width: 1320px) {
+  .card__grid-container {
+    padding-top: 20px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 40px 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+@media screen and (min-width: 630px) and (max-width: 880px) {
+  .card__grid-container {
+    padding-top: 20px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 40px 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}

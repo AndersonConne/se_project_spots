@@ -1,0 +1,42 @@
+.card {
+  border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
+  padding-bottom: 30px;
+}
+
+.card__grid-container {
+  padding-top: 20px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 40px 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.card__image {
+  width: 413px;
+  height: 413px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.card__title-container {
+  display: flex;
+  margin: 10px 0 0 0;
+  font-weight: 500;
+}
+
+.card__title {
+  font-size: 20px;
+  margin: 0;
+  color: rgba(33, 33, 33, 1);
+  line-height: 1.2;
+}
+
+.card__like {
+  margin-left: auto;
+  width: 23px;
+  height: 20px;
+}

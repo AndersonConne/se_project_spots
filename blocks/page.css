@@ -1,0 +1,14 @@
+.page {
+  margin: 0 auto;
+  max-width: 1280px;
+  min-height: 100vh;
+  background-color: #fcf5e5;
+  font-family: "Poppins", Arial, sans-serif;
+  line-height: 24px;
+  padding: 20px;
+}
+
+.page__section {
+  max-width: 1280px;
+  margin: 0 auto;
+}

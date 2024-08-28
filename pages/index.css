@@ -18,6 +18,9 @@
     white-space: nowrap;
     overflow: hidden;
   }
+  .card__image {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 880px) and (min-width: 300px) {
@@ -36,6 +39,10 @@
   .card__content {
     display: flex;
     flex-direction: column;
+  }
+
+  .card__image {
+    width: 100%;
   }
 
   .profile {

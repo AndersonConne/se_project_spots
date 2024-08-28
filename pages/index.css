@@ -27,10 +27,15 @@
     justify-content: center;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(1, 1fr);
-    gap: 40px 20px;
+    gap: 40px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+  }
+
+  .card__content {
+    display: flex;
+    flex-direction: column;
   }
 
   .profile {
@@ -66,6 +71,7 @@
     font-size: 16px;
     line-height: 1;
   }
+
   .profile__add-button {
     margin-bottom: 20px;
     margin-left: 0;

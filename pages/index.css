@@ -20,11 +20,11 @@
   }
 }
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 880px) and (min-width: 300px) {
   .card__grid-container {
     padding-top: 20px;
     display: grid;
-    justify-content: center;
+    align-items: center;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(1, 1fr);
     gap: 40px;
@@ -67,7 +67,7 @@
   }
   .profile__edit-button {
     margin-bottom: 20px;
-    margin-left: 0;
+    margin-left: auto;
     font-size: 16px;
     line-height: 1;
   }

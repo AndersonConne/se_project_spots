@@ -6,7 +6,7 @@
 @import url("../blocks/card.css");
 @import url("../blocks/footer.css");
 
-@media screen and (min-width: 880px) and (max-width: 1320px) {
+@media screen and (max-width: 1320px) {
   .card__grid-container {
     padding-top: 20px;
     display: grid;
@@ -20,7 +20,7 @@
   }
 }
 
-@media screen and (min-width: 630px) and (max-width: 880px) {
+@media screen and (max-width: 880px) {
   .card__grid-container {
     padding-top: 20px;
     display: grid;
@@ -31,5 +31,45 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+  }
+
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 34px 0 20px;
+    border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
+  }
+
+  .profile__image {
+    margin-bottom: 12px;
+  }
+
+  .profile__container {
+    align-items: center;
+  }
+
+  .profile__name {
+    margin-bottom: 6px;
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .profile__description {
+    margin-bottom: 32px;
+    font-size: 16px;
+    line-height: 1;
+  }
+  .profile__edit-button {
+    margin-bottom: 20px;
+    margin-left: 0;
+    font-size: 16px;
+    line-height: 1;
+  }
+  .profile__add-button {
+    margin-bottom: 20px;
+    margin-left: 0;
+    width: 100%;
+    font-size: 16px;
   }
 }

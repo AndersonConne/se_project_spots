@@ -31,10 +31,11 @@
   margin: 0;
   line-height: 1;
   font-size: 16px;
+  color: rgba(33, 33, 33, 0.7);
 }
 
 .profile__edit-button {
-  margin-top: auto;
+  margin: auto 0 0 0;
   text-align: left;
   background-color: #fcf5e5;
   font-size: 16px;
@@ -47,7 +48,6 @@
 .profile__edit {
   height: 16px;
   width: 16px;
-  margin-right: 8px;
 }
 
 .profile__add-button {

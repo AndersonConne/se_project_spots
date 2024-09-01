@@ -20,6 +20,7 @@
   margin: 0 0 12px;
   line-height: 1;
   font-size: 32px;
+  font-weight: 500;
   text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
@@ -32,6 +33,7 @@
   line-height: 1;
   font-size: 16px;
   color: rgba(33, 33, 33, 0.7);
+  font-weight: 500;
 }
 
 .profile__edit-button {
@@ -43,6 +45,7 @@
   border: none;
   font-size: 16px;
   line-height: 1;
+  font-weight: 500;
 }
 
 .profile__edit {
@@ -60,6 +63,7 @@
   border-radius: 10px;
   line-height: 1;
   font-size: 16px;
+  font-weight: 400;
 }
 
 .profile__add-image {

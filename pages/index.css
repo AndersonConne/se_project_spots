@@ -1,5 +1,5 @@
-@import url("../vendor/fonts/normalize.css");
-@import url("../vendor/fonts/fonts.css");
+@import url("../vendor/normalize.css");
+@import url("../vendor/fonts.css");
 @import url("../blocks/page.css");
 @import url("../blocks/header.css");
 @import url("../blocks/content.css");
@@ -55,7 +55,7 @@
   }
 
   .profile__image {
-    margin-bottom: 12px;
+    margin: 0 0 12px;
   }
 
   .profile__container {

@@ -4,6 +4,7 @@
 }
 
 .card__grid-container {
+  padding: 0;
   padding-top: 20px;
   display: grid;
   justify-content: center;
@@ -14,7 +15,7 @@
   overflow: hidden;
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  border: none;
 }
 
 .card__image {

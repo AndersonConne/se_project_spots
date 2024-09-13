@@ -26,3 +26,4 @@ This project is Triple Ten's third project. It uses grid, flexbox, and media que
 **Links**
 
 [Project Link](https://andersonconne.github.io/se_project_spots/)
+[Video Link](https://drive.google.com/file/d/1npUpRi8ho4oXpQWiE-0WcQIdrmZNQBDQ/view?usp=drive_link)

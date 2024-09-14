@@ -59,11 +59,6 @@
   opacity: 1;
 }
 
-@media screen and (max-width: 1320px) and (min-width: 764px) {
-  .card__grid-container {
-  }
-}
-
 @media screen and (max-width: 627px) {
   .card {
     padding-bottom: 20px;

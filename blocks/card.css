@@ -1,6 +1,6 @@
 .card {
   border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
-  padding-bottom: 30px;
+  padding-bottom: 40px;
 }
 
 .card__grid-container {
@@ -9,10 +9,8 @@
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 413px);
-  gap: 40px 20px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  column-gap: 20px;
+  row-gap: 40px;
   list-style-type: none;
   margin: 0;
   border: none;
@@ -63,20 +61,16 @@
 
 @media screen and (max-width: 1320px) and (min-width: 764px) {
   .card__grid-container {
-    padding-top: 20px;
-    display: grid;
-    justify-content: center;
-    gap: 40px 20px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    align-items: center;
   }
 }
 
 @media screen and (max-width: 627px) {
+  .card {
+    padding-bottom: 20px;
+  }
   .card__grid-container {
     grid-template-columns: repeat(auto-fit, 288px);
+    row-gap: 20px;
   }
 
   .card__image {

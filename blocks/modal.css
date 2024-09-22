@@ -50,9 +50,6 @@
   margin: 0 0 32px;
 }
 
-.modal__form {
-}
-
 .modal__label {
   display: flex;
   flex-direction: column;

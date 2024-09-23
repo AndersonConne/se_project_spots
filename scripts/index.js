@@ -29,7 +29,6 @@ const modalContainer = document.querySelector("#edit-modal");
 const dismiss = modalContainer.querySelector(".modal__dismiss-button");
 const inputName = modalContainer.querySelector("#name");
 const inputDescription = modalContainer.querySelector("#description");
-const submitButton = modalContainer.querySelector(".modal__submit-button");
 const editFormElement = modalContainer.querySelector(".modal__form");
 
 const editProfile = document.querySelector(".profile__edit-button");
@@ -64,18 +63,19 @@ function dismissModal() {
   modalContainer.classList.remove("modal__open");
 }
 
-function submitAction(event) {
+function handleSubmitForm(evt) {
+  evt.preventDefault();
+  console.log("button was clicked");
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputDescription.value;
-  event.preventDefault();
   dismissModal();
 }
 
 editProfile.addEventListener("click", openModal);
 dismiss.addEventListener("click", dismissModal);
-editFormElement.addEventListener("submit", submitAction);
+editFormElement.addEventListener("submit", handleSubmitForm);
 
 for (let i = 0; i < initialCards.length; i++) {
   const cardElement = getCardElement(initialCards[i]);
-  cardList.prepend(cardElement);
+  cardList.append(cardElement);
 }

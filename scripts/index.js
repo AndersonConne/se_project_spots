@@ -54,13 +54,13 @@ function getCardElement(data) {
 }
 
 function openModal() {
-  modalContainer.classList.add("modal__open");
+  modalContainer.classList.add("modal_open");
   inputName.value = profileName.textContent;
   inputDescription.value = profileDescription.textContent;
 }
 
 function dismissModal() {
-  modalContainer.classList.remove("modal__open");
+  modalContainer.classList.remove("modal_open");
 }
 
 function handleSubmitForm(evt) {

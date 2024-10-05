@@ -46,6 +46,7 @@
           <ul class="card__grid-container">
             <template id="card__template">
               <li class="card__content">
+                <button class="card__delete" type="button"></button>
                 <img class="card__image" src="" alt="" />
                 <div class="card__title-container">
                   <h2 class="card__title"></h2>
@@ -82,6 +83,50 @@
             </label>
             <button class="modal__submit-button" type="submit">Save</button>
           </form>
+        </div>
+      </div>
+      <div class="modal" id="post-modal">
+        <div class="modal__container">
+          <button
+            class="modal__dismiss-button"
+            id="post-modal-dismiss"
+          ></button>
+          <h2 class="modal__title">New Post</h2>
+          <form id="add-card-form" class="modal__form">
+            <label for="add-card-link" class="modal__label">
+              Image Link
+              <input
+                id="add-card-link"
+                class="modal__input"
+                placeholder="Paste a link to the picture"
+                type="url"
+                name="link"
+              />
+            </label>
+            <label for="caption" class="modal__label"
+              >Caption
+              <input
+                id="caption"
+                placeholder="Type your caption"
+                class="modal__input"
+                name="name"
+              />
+            </label>
+            <button class="modal__submit-button" type="submit">Save</button>
+          </form>
+        </div>
+      </div>
+      <div class="modal" id="preview-modal">
+        <div class="modal__container modal__container_type_preview">
+          <button
+            class="modal__dismiss-button modal__dismiss-btn_type_preview"
+            id="preview-dismiss"
+          ></button>
+          <img src="" alt="" class="modal__image" id="preview-image" />
+          <p
+            class="modal__caption modal__caption_type_preview"
+            id="preview-caption"
+          ></p>
         </div>
       </div>
     </div>

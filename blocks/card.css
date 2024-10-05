@@ -3,6 +3,10 @@
   padding-bottom: 40px;
 }
 
+.card__content {
+  position: relative;
+}
+
 .card__grid-container {
   padding: 0;
   padding-top: 20px;
@@ -22,6 +26,30 @@
   border-radius: 10px;
   object-fit: cover;
   display: block;
+}
+
+.card__image:hover {
+  cursor: pointer;
+}
+
+.card__delete {
+  position: absolute;
+  background-image: url("../images/delete-icon.svg");
+  top: 10px;
+  right: 10px;
+  height: 32px;
+  width: 32px;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  padding: 0;
+}
+
+.card__delete:hover {
+  background-image: url("../images/delete-icon-hover.svg");
+  cursor: pointer;
 }
 
 .card__title-container {
@@ -53,6 +81,15 @@
   height: 20px;
   cursor: pointer;
   border: none;
+}
+
+.card_like-color {
+  background-image: url(../images/like-icon-clicked.svg);
+  opacity: 1;
+}
+
+.card_like-color:hover {
+  background-image: url(../images/hover-like-clicked.svg);
 }
 
 .card__like:hover {

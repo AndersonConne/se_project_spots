@@ -29,11 +29,12 @@ const initialCards = [
   },
 ];
 
-const modalContainer = document.querySelector("#edit-modal");
-const dismiss = document.querySelector(".modal__dismiss-button");
-const inputName = modalContainer.querySelector("#name");
-const inputDescription = modalContainer.querySelector("#description");
-const editFormElement = modalContainer.querySelector(".modal__form");
+const profileModal = document.querySelector("#edit-modal");
+const profileCloseButton = profileModal.querySelector(".modal__dismiss-button");
+const inputName = profileModal.querySelector("#name");
+const inputDescription = profileModal.querySelector("#description");
+const editFormElement = document.forms["edit-profile"];
+const closeButtons = profileModal.querySelectorAll(".modal__dismiss-button");
 
 const editProfile = document.querySelector(".profile__edit-button");
 const profileName = document.querySelector(".profile__name");
@@ -47,12 +48,14 @@ const postButton = document.querySelector(".profile__add-button");
 const postModalDismiss = document.querySelector("#post-modal-dismiss");
 const linkInput = document.querySelector("#add-card-link");
 const captionInput = document.querySelector("#caption");
-const postFormElement = document.querySelector("#add-card-form");
+const postFormElement = document.forms["add-card-form"];
 const cardImage = document.querySelector(".card__image");
 const cardTitle = document.querySelector(".card__title");
 
 const previewModalContainer = document.querySelector("#preview-modal");
 const previewDismiss = previewModalContainer.querySelector("#preview-dismiss");
+const previewImage = previewModalContainer.querySelector("#preview-image");
+const previewText = previewModalContainer.querySelector("#preview-caption");
 
 function getCardElement(data) {
   const cardElement = cardTemplate.content
@@ -79,11 +82,9 @@ function getCardElement(data) {
   cardLikeElement.addEventListener("click", handleLikeClick);
   deleteButton.addEventListener("click", handleDelete);
   cardImageElement.addEventListener("click", () => {
-    const previewImage = previewModalContainer.querySelector("#preview-image");
-    const previewText = previewModalContainer.querySelector("#preview-caption");
-
     openModal(previewModalContainer);
     previewImage.src = data.link;
+    previewImage.alt = dara.name;
     previewText.textContent = data.name;
   });
 
@@ -102,16 +103,15 @@ function handleEditProfileSubmitForm(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputDescription.value;
-  dismissModal(modalContainer);
+  dismissModal(profileModal);
 }
 
 function handlePostLinkForm(evt) {
   evt.preventDefault();
-  let newPost = { name: captionInput.value, link: linkInput.value };
+  const newPost = { name: captionInput.value, link: linkInput.value };
   const cardElement = getCardElement(newPost);
   cardList.prepend(cardElement);
-  captionInput.value = "";
-  linkInput.value = "";
+  evt.target.reset();
   dismissModal(modalPostContainer);
 }
 
@@ -122,11 +122,11 @@ postButton.addEventListener("click", () => {
 });
 
 editProfile.addEventListener("click", () => {
-  openModal(modalContainer);
+  openModal(profileModal);
 });
 
-dismiss.addEventListener("click", () => {
-  dismissModal(modalContainer);
+profileCloseButton.addEventListener("click", () => {
+  dismissModal(profileModal);
 });
 editFormElement.addEventListener("submit", handleEditProfileSubmitForm);
 

@@ -33,6 +33,7 @@
 .modal__container_type_preview {
   padding: 0;
   background-color: transparent;
+  max-width: max-content;
 }
 
 .modal__dismiss-button {
@@ -52,7 +53,7 @@
   cursor: pointer;
 }
 
-.modal__dismiss-btn_type_preview {
+.modal__dismiss-button_type_preview {
   background-image: url("../images/white-close.svg");
   top: 0px;
   right: -52.5px;
@@ -142,7 +143,7 @@
     right: 12px;
   }
 
-  .modal__dismiss-btn_type_preview {
+  .modal__dismiss-button_type_preview {
     top: -41px;
     right: -8px;
   }

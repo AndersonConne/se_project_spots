@@ -30,7 +30,7 @@ const initialCards = [
 ];
 
 const modalContainer = document.querySelector("#edit-modal");
-const dismiss = modalContainer.querySelector(".modal__dismiss-button");
+const dismiss = document.querySelector(".modal__dismiss-button");
 const inputName = modalContainer.querySelector("#name");
 const inputDescription = modalContainer.querySelector("#description");
 const editFormElement = modalContainer.querySelector(".modal__form");
@@ -102,7 +102,7 @@ function handleEditProfileSubmitForm(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputDescription.value;
-  dismissModal();
+  dismissModal(modalContainer);
 }
 
 function handlePostLinkForm(evt) {
@@ -110,6 +110,8 @@ function handlePostLinkForm(evt) {
   let newPost = { name: captionInput.value, link: linkInput.value };
   const cardElement = getCardElement(newPost);
   cardList.prepend(cardElement);
+  captionInput.value = "";
+  linkInput.value = "";
   dismissModal(modalPostContainer);
 }
 

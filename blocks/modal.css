@@ -60,11 +60,10 @@
 }
 
 .modal__image {
-  width: 100%;
   object-fit: cover;
-  max-width: 80vw;
-  max-height: 80vh;
   border-radius: 8px;
+  max-width: 100%;
+  max-height: 80vh;
 }
 
 .modal__title {
@@ -134,9 +133,8 @@
   }
 
   .modal__container_type_preview {
+    width: 288px;
     padding: 0;
-    max-width: 80vw;
-    max-height: 80vh;
   }
 
   .modal__dismiss-button {
@@ -169,18 +167,5 @@
   .modal__submit-button {
     margin-bottom: 12px;
     width: 100%;
-  }
-}
-
-@media screen and (max-width: 880px) {
-  .modal__container_type_preview {
-    padding: 0;
-    max-width: 80vw;
-    max-height: 80vh;
-  }
-
-  .modal__dismiss-btn_type_preview {
-    top: -41px;
-    right: -8px;
   }
 }

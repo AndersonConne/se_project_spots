@@ -29,12 +29,12 @@ const initialCards = [
   },
 ];
 
+const modalContainer = document.querySelectorAll(".modal__container");
 const profileModal = document.querySelector("#edit-modal");
 const profileCloseButton = profileModal.querySelector(".modal__dismiss-button");
 const inputName = profileModal.querySelector("#name");
 const inputDescription = profileModal.querySelector("#description");
 const editFormElement = document.forms["edit-profile"];
-const closeButtons = profileModal.querySelectorAll(".modal__dismiss-button");
 
 const editProfile = document.querySelector(".profile__edit-button");
 const profileName = document.querySelector(".profile__name");
@@ -93,10 +93,14 @@ function getCardElement(data) {
 
 function openModal(modal) {
   modal.classList.add("modal_open");
+  document, addEventListener("mousedown", handleOutsideClick);
+  document.addEventListener("keydown", handleEscape);
 }
 
 function dismissModal(modal) {
   modal.classList.remove("modal_open");
+  document.removeEventListener("mousedown", handleOutsideClick);
+  document.removeEventListener("keydown", handleEscape);
 }
 
 function handleEditProfileSubmitForm(evt) {
@@ -115,13 +119,30 @@ function handlePostLinkForm(evt) {
   dismissModal(modalPostContainer);
 }
 
+function handleOutsideClick(event) {
+  const isClickedOutsideModal = !event.target.closest(".modal__container");
+  if (isClickedOutsideModal) {
+    dismissModal(previewModalContainer);
+    dismissModal(profileModal);
+    dismissModal(modalPostContainer);
+  }
+}
+
+function handleEscape(evt) {
+  if (evt.key === "Escape") {
+    dismissModal(profileModal);
+    dismissModal(previewModalContainer);
+    dismissModal(modalPostContainer);
+  }
+}
+
 postButton.addEventListener("click", () => {
   openModal(modalPostContainer);
-  inputName.value = profileName.textContent;
-  inputDescription.value = profileDescription.textContent;
 });
 
 editProfile.addEventListener("click", () => {
+  inputName.value = profileName.textContent;
+  inputDescription.value = profileDescription.textContent;
   openModal(profileModal);
 });
 

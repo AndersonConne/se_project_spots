@@ -98,6 +98,18 @@
   border-width: 1px;
 }
 
+.modal__input_type_error {
+  border: 1px solid rgba(255, 0, 0, 0.6);
+}
+
+.modal__error {
+  color: rgba(255, 0, 0, 0.7);
+  font-family: "Poppins", Arial, sans-serif;
+  line-height: 1.1;
+  font-size: 16px;
+  font-weight: 500;
+}
+
 .modal__input::placeholder {
   color: rgba(0, 0, 0, 0.3);
   font-family: "Poppins", Arial, sans-serif;
@@ -112,6 +124,11 @@
   font-family: "Poppins", Arial, sans-serif;
   font-size: 16px;
   line-height: 1;
+}
+
+.modal__submit-button_type_inactive {
+  background-color: rgba(33, 33, 33, 0.4);
+  border: 0px;
 }
 
 .modal__caption {

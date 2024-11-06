@@ -29,12 +29,13 @@ const initialCards = [
   },
 ];
 
-const modalContainer = document.querySelectorAll(".modal__container");
+const popupModals = document.querySelectorAll(".modal");
 const profileModal = document.querySelector("#edit-modal");
 const profileCloseButton = profileModal.querySelector(".modal__dismiss-button");
 const inputName = profileModal.querySelector("#name");
 const inputDescription = profileModal.querySelector("#description");
 const editFormElement = document.forms["edit-profile"];
+const allCloseButtons = document.querySelectorAll(".modal__dismiss-button");
 
 const editProfile = document.querySelector(".profile__edit-button");
 const profileName = document.querySelector(".profile__name");
@@ -51,6 +52,9 @@ const captionInput = document.querySelector("#caption");
 const postFormElement = document.forms["add-card-form"];
 const cardImage = document.querySelector(".card__image");
 const cardTitle = document.querySelector(".card__title");
+const cardSubmitButton = modalPostContainer.querySelector(
+  ".modal__submit-button"
+);
 
 const previewModalContainer = document.querySelector("#preview-modal");
 const previewDismiss = previewModalContainer.querySelector("#preview-dismiss");
@@ -93,14 +97,10 @@ function getCardElement(data) {
 
 function openModal(modal) {
   modal.classList.add("modal_open");
-  document, addEventListener("mousedown", handleOutsideClick);
-  document.addEventListener("keydown", handleEscape);
 }
 
 function dismissModal(modal) {
   modal.classList.remove("modal_open");
-  document.removeEventListener("mousedown", handleOutsideClick);
-  document.removeEventListener("keydown", handleEscape);
 }
 
 function handleEditProfileSubmitForm(evt) {
@@ -116,25 +116,31 @@ function handlePostLinkForm(evt) {
   const cardElement = getCardElement(newPost);
   cardList.prepend(cardElement);
   evt.target.reset();
+  disableButton(cardSubmitButton);
   dismissModal(modalPostContainer);
-}
-
-function handleOutsideClick(event) {
-  const isClickedOutsideModal = !event.target.closest(".modal__container");
-  if (isClickedOutsideModal) {
-    dismissModal(previewModalContainer);
-    dismissModal(profileModal);
-    dismissModal(modalPostContainer);
-  }
 }
 
 function handleEscape(evt) {
   if (evt.key === "Escape") {
-    dismissModal(profileModal);
-    dismissModal(previewModalContainer);
-    dismissModal(modalPostContainer);
+    const modal = document.querySelector(".modal_open");
+    dismissModal(modal);
   }
 }
+
+popupModals.forEach((modal) => {
+  modal.addEventListener("mousedown", (evt) => {
+    if (evt.target.classList.contains("modal")) {
+      dismissModal(modal);
+      document.removeEventListener("mousedown", dismissModal);
+    }
+  });
+});
+
+allCloseButtons.forEach((button) => {
+  const popup = button.closest(".modal");
+  console.log(popup);
+  button.addEventListener("click", () => dismissModal(popup));
+});
 
 postButton.addEventListener("click", () => {
   openModal(modalPostContainer);
@@ -143,24 +149,15 @@ postButton.addEventListener("click", () => {
 editProfile.addEventListener("click", () => {
   inputName.value = profileName.textContent;
   inputDescription.value = profileDescription.textContent;
+  resetFormValidation(editFormElement, [inputName, inputDescription]);
   openModal(profileModal);
 });
 
-profileCloseButton.addEventListener("click", () => {
-  dismissModal(profileModal);
-});
 editFormElement.addEventListener("submit", handleEditProfileSubmitForm);
 
-postModalDismiss.addEventListener("click", () => {
-  dismissModal(modalPostContainer);
-});
+document.addEventListener("keydown", handleEscape);
 
 postFormElement.addEventListener("submit", handlePostLinkForm);
-
-previewDismiss.addEventListener("click", () => {
-  dismissModal(previewModalContainer);
-});
-
 initialCards.forEach((item) => {
   const cardElement = getCardElement(item);
   cardList.append(cardElement);

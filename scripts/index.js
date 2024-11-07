@@ -107,6 +107,7 @@ function handleEditProfileSubmitForm(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputDescription.value;
+  resetFormValidation(editFormElement, [inputName, inputDescription]);
   dismissModal(profileModal);
 }
 
@@ -116,14 +117,16 @@ function handlePostLinkForm(evt) {
   const cardElement = getCardElement(newPost);
   cardList.prepend(cardElement);
   evt.target.reset();
-  disableButton(cardSubmitButton);
+  disableButton(cardSubmitButton, settings);
   dismissModal(modalPostContainer);
 }
 
 function handleEscape(evt) {
   if (evt.key === "Escape") {
-    const modal = document.querySelector(".modal_open");
-    dismissModal(modal);
+    const modalOpen = document.querySelector(".modal_open");
+    if (modalOpen) {
+      dismissModal(modalOpen);
+    }
   }
 }
 

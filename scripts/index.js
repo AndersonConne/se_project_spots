@@ -158,8 +158,6 @@ editProfile.addEventListener("click", () => {
 
 editFormElement.addEventListener("submit", handleEditProfileSubmitForm);
 
-document.addEventListener("keydown", handleEscape);
-
 postFormElement.addEventListener("submit", handlePostLinkForm);
 initialCards.forEach((item) => {
   const cardElement = getCardElement(item);

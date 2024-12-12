@@ -1,3 +1,14 @@
+import {
+  enableValidation,
+  settings,
+  resetFormValidation,
+  disableButton,
+} from "../scripts/validation.js";
+import "./index.css";
+import imageLogo from "../images/logo.svg";
+import avatarImage from "../images/avatar.jpg";
+import editImage from "../images/edit.svg";
+import plusImage from "../images/add.svg";
 const initialCards = [
   {
     name: "Val Thorens",
@@ -28,6 +39,18 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
   },
 ];
+
+const spotsLogo = document.getElementById("image-logo");
+spotsLogo.src = imageLogo;
+
+const avatarImages = document.getElementById("avatar-image");
+avatarImages.src = avatarImage;
+
+const edit = document.getElementById("edit-image");
+edit.src = editImage;
+
+const plus = document.getElementById("plus-image");
+plus.src = plusImage;
 
 const popupModals = document.querySelectorAll(".modal");
 const profileModal = document.querySelector("#edit-modal");
@@ -163,3 +186,5 @@ initialCards.forEach((item) => {
   const cardElement = getCardElement(item);
   cardList.append(cardElement);
 });
+
+enableValidation(settings);

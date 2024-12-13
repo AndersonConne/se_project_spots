@@ -9,36 +9,66 @@ import imageLogo from "../images/logo.svg";
 import avatarImage from "../images/avatar.jpg";
 import editImage from "../images/edit.svg";
 import plusImage from "../images/add.svg";
-const initialCards = [
-  {
-    name: "Val Thorens",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg",
+import Api from "../utils/api.js";
+
+// const initialCards = [
+//   {
+//     name: "Val Thorens",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg",
+//   },
+//   {
+//     name: "Restaurant terrace",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/2-photo-by-ceiline-from-pexels.jpg",
+//   },
+//   {
+//     name: "An outdoor cafe",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/3-photo-by-tubanur-dogan-from-pexels.jpg",
+//   },
+//   {
+//     name: "A very long bridge, over the forest and through the trees",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/4-photo-by-maurice-laschet-from-pexels.jpg",
+//   },
+//   {
+//     name: "Tunnel with morning light",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/5-photo-by-van-anh-nguyen-from-pexels.jpg",
+//   },
+//   {
+//     name: "Mountain house",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
+//   },
+//   {
+//     name: "Golden Gate Bridge",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
+//   },
+// ];
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "8c16611b-9dea-425f-bf23-1b84ee0078e3",
+    "Content-Type": "application/json",
   },
-  {
-    name: "Restaurant terrace",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/2-photo-by-ceiline-from-pexels.jpg",
-  },
-  {
-    name: "An outdoor cafe",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/3-photo-by-tubanur-dogan-from-pexels.jpg",
-  },
-  {
-    name: "A very long bridge, over the forest and through the trees",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/4-photo-by-maurice-laschet-from-pexels.jpg",
-  },
-  {
-    name: "Tunnel with morning light",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/5-photo-by-van-anh-nguyen-from-pexels.jpg",
-  },
-  {
-    name: "Mountain house",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
-  },
-  {
-    name: "Golden Gate Bridge",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
-  },
-];
+});
+
+api
+  .getAppInfo()
+  .then(([cards, userInfo]) => {
+    cards.forEach((item) => {
+      const cardElement = getCardElement(item);
+      cardList.append(cardElement);
+    });
+
+    avatarImages.src = userInfo.avatar;
+    profileName.textContent = userInfo.name;
+    profileDescription.textContent = userInfo.about;
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+// initialCards.forEach((item) => {
+//   const cardElement = getCardElement(item);
+//   cardList.append(cardElement);
+// });
 
 const spotsLogo = document.getElementById("image-logo");
 spotsLogo.src = imageLogo;
@@ -130,19 +160,27 @@ function dismissModal(modal) {
 
 function handleEditProfileSubmitForm(evt) {
   evt.preventDefault();
-  profileName.textContent = inputName.value;
-  profileDescription.textContent = inputDescription.value;
-  dismissModal(profileModal);
+  api
+    .editUserInfo({ name: inputName.value, about: inputDescription.value })
+    .then((data) => {
+      profileName.textContent = data.name;
+      profileDescription.textContent = data.about;
+      dismissModal(profileModal);
+    });
 }
 
 function handlePostLinkForm(evt) {
   evt.preventDefault();
-  const newPost = { name: captionInput.value, link: linkInput.value };
-  const cardElement = getCardElement(newPost);
-  cardList.prepend(cardElement);
-  evt.target.reset();
-  dismissModal(modalPostContainer);
-  disableButton(cardSubmitButton, settings);
+  api
+    .addNewPost({ name: captionInput.value, link: linkInput.value })
+    .then((post) => {
+      const cardElement = getCardElement(post);
+      cardList.prepend(cardElement);
+      evt.target.reset();
+      dismissModal(modalPostContainer);
+      disableButton(cardSubmitButton, settings);
+    });
+  // const newPost = { name: captionInput.value, link: linkInput.value };
 }
 
 function handleEscape(evt) {
@@ -182,9 +220,5 @@ editProfile.addEventListener("click", () => {
 editFormElement.addEventListener("submit", handleEditProfileSubmitForm);
 
 postFormElement.addEventListener("submit", handlePostLinkForm);
-initialCards.forEach((item) => {
-  const cardElement = getCardElement(item);
-  cardList.append(cardElement);
-});
 
 enableValidation(settings);

@@ -11,6 +11,8 @@ import editImage from "../images/edit.svg";
 import plusImage from "../images/add.svg";
 import Api from "../utils/api.js";
 
+let selectedCard, selectedCardId;
+
 // const initialCards = [
 //   {
 //     name: "Val Thorens",
@@ -109,6 +111,11 @@ const cardSubmitButton = modalPostContainer.querySelector(
   ".modal__submit-button"
 );
 
+// DeleteModal elements
+
+const deleteModal = document.querySelector("#delete-card-modal");
+const deleteContainer = deleteModal.querySelector(".modal__form");
+
 const previewModalContainer = document.querySelector("#preview-modal");
 const previewDismiss = previewModalContainer.querySelector("#preview-dismiss");
 const previewImage = previewModalContainer.querySelector("#preview-image");
@@ -132,12 +139,25 @@ function getCardElement(data) {
     cardLikeElement.classList.toggle("card_like-color");
   }
 
-  function handleDelete() {
-    cardElement.remove();
+  function handleDeleteSubmit(evt) {
+    evt.preventDefault();
+    api.deleteCard(selectedCardId).then(() => {
+      selectedCard.remove();
+      dismissModal(deleteModal);
+    });
   }
 
+  function handleDelete(cardElement, cardId) {
+    selectedCard = cardElement;
+    selectedCardId = cardId;
+    console.log(selectedCardId);
+    openModal(deleteModal);
+  }
+  deleteContainer.addEventListener("submit", handleDeleteSubmit);
   cardLikeElement.addEventListener("click", handleLikeClick);
-  deleteButton.addEventListener("click", handleDelete);
+  deleteButton.addEventListener("click", () => {
+    handleDelete(cardElement, data._id);
+  });
   cardImageElement.addEventListener("click", () => {
     openModal(previewModalContainer);
     previewImage.src = data.link;
@@ -218,7 +238,6 @@ editProfile.addEventListener("click", () => {
 });
 
 editFormElement.addEventListener("submit", handleEditProfileSubmitForm);
-
 postFormElement.addEventListener("submit", handlePostLinkForm);
 
 enableValidation(settings);

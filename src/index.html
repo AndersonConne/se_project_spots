@@ -16,17 +16,7 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <div class="profile__avatar-container">
-            <button class="profile__image-btn">
-              <img
-                class="profile__pencil-icon"
-                src=""
-                alt=""
-                id="white-pencil"
-              />
-            </button>
-            <img id="avatar-image" alt="profile image" class="profile__image" />
-          </div>
+          <img id="avatar-image" alt="profile image" class="profile__image" />
           <div class="profile__container">
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
@@ -140,43 +130,6 @@
           ></p>
         </div>
       </div>
-      <div class="modal" id="delete-card-modal">
-        <div class="modal__container modal__container_type_delete">
-          <button
-            class="modal__dismiss-button modal__dismiss-button_type_preview"
-            id="preview-dismiss"
-          ></button>
-          <p class="modal__confirmation">
-            Are you sure you want to delete this Image?
-          </p>
-          <form class="modal__form modal__delete-container" id="delete-modal-form">
-            <button class="modal__submit-button modal__delete-btn" type="submit">
-              Delete
-            </button>
-            <button class="modal__cancel-btn" type="button">Cancel</button>
-          </form>
-        </div>
-      </div>
-      <div class="modal" id="avatar-modal">
-        <div class="modal__container">
-          <button class="modal__dismiss-button"></button>
-          <h2 class="modal__title">Edit profile avatar</h2>
-          <form name="add-card-form" class="modal__form" id="avatar-form" novalidate>
-            <label for="add-card-link" class="modal__label">
-              Profile Picture
-              <input
-                id="add-card-link"
-                class="modal__input"
-                placeholder="Paste the link to an image"
-                type="url"
-                name="link"
-                required
-              />
-              <span id="add-card-link-error" class="modal__error"></span>
-            </label>
-            <button class="modal__submit-button" id="avatar-button" type="submit">Save</button>
-          </form>
-        </div>
     </div>
   </body>
 </html>

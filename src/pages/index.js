@@ -228,6 +228,7 @@ function handlePostLinkForm(evt) {
         const cardElement = getCardElement(post);
         cardList.prepend(cardElement);
         dismissModal(modalPostContainer);
+        disableButton(evt.submitter, settings);
       });
   }
 
